@@ -8,4 +8,17 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
+<header></header>
+
 {@render children()}
+
+<style>
+	header {
+		position: fixed;
+		top: 0;
+		left: 0;
+
+		width: 100vw;
+		padding: 1rem;
+	}
+</style>
