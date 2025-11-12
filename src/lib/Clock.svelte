@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { now } from './now.svelte';
+	// import { now } from './now.svelte';
+	import { now } from './now.store';
 
 	interface Props {
 		size?: number;
@@ -28,9 +29,13 @@
 
 	const { size = 100 }: Props = $props();
 
-	const hours = $derived(now.value.getHours());
-	const minutes = $derived(now.value.getMinutes());
-	const seconds = $derived(now.value.getSeconds());
+	// const hours = $derived(now.value.getHours());
+	// const minutes = $derived(now.value.getMinutes());
+	// const seconds = $derived(now.value.getSeconds());
+
+	const hours = $derived($now.getHours());
+	const minutes = $derived($now.getMinutes());
+	const seconds = $derived($now.getSeconds());
 
 	const radius = $derived(size / 2);
 	const origin = $derived(`${radius}px ${radius}px`);

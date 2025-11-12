@@ -2,8 +2,8 @@
 	import Clock from '$lib/Clock.svelte';
 	import Digital from './Digital.svelte';
 
-	let clockOn = $state(true);
-	let digitalOn = $state(true);
+	let clockOn = $state(false);
+	let digitalOn = $state(false);
 </script>
 
 <section>
