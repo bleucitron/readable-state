@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { SvelteDate } from 'svelte/reactivity';
+	import { getNow } from './now.svelte';
 
 	interface Props {
 		size?: number;
@@ -29,11 +28,11 @@
 
 	const { size = 100 }: Props = $props();
 
-	const date = new SvelteDate();
+	const now = $derived(getNow());
 
-	const hours = $derived(date.getHours());
-	const minutes = $derived(date.getMinutes());
-	const seconds = $derived(date.getSeconds());
+	const hours = $derived(now.getHours());
+	const minutes = $derived(now.getMinutes());
+	const seconds = $derived(now.getSeconds());
 
 	const radius = $derived(size / 2);
 	const origin = $derived(`${radius}px ${radius}px`);
@@ -49,12 +48,6 @@
 	const { x: x_hours, y: y_hours } = $derived(angleToCoords(angle_hours));
 	const { x: x_minutes, y: y_minutes } = $derived(angleToCoords(angle_minutes));
 	const { x: x_seconds, y: y_seconds } = $derived(angleToCoords(angle_seconds));
-
-	onMount(() => {
-		setInterval(() => {
-			date.setTime(Date.now());
-		}, 1000);
-	});
 </script>
 
 <!-- <div class="Clock"> -->
