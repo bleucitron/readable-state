@@ -1,9 +1,11 @@
-let now = $state(new Date());
+class Now {
+	value = $state(new Date());
 
-export function getNow() {
-	return now;
+	constructor() {
+		setInterval(() => {
+			this.value = new Date();
+		}, 1000);
+	}
 }
 
-setInterval(() => {
-	now = new Date();
-}, 1000);
+export const now = new Now();

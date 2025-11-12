@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { getNow } from './now.svelte';
-
-	const now = $derived(getNow());
+	import { now } from './now.svelte';
 </script>
 
-<p>{now.toLocaleTimeString('fr')}</p>
+<p>{now.value.toLocaleTimeString('fr')}</p>
 
 <style>
 	p {
