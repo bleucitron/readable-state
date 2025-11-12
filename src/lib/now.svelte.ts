@@ -1,10 +1,14 @@
 class Now {
-	value = $state(new Date());
+	#value = $state(new Date());
 
 	constructor() {
 		setInterval(() => {
-			this.value = new Date();
+			this.#value = new Date();
 		}, 1000);
+	}
+
+	get value() {
+		return this.#value;
 	}
 }
 
