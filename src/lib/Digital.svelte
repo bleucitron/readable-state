@@ -1,17 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { SvelteDate } from 'svelte/reactivity';
+	import { getNow } from './now.svelte';
 
-	const date = new SvelteDate();
-
-	onMount(() => {
-		setInterval(() => {
-			date.setTime(Date.now());
-		}, 1000);
-	});
+	const now = $derived(getNow());
 </script>
 
-<p>{date.toLocaleTimeString('fr')}</p>
+<p>{now.toLocaleTimeString('fr')}</p>
 
 <style>
 	p {
