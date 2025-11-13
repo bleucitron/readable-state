@@ -1,22 +1,16 @@
-import { createSubscriber } from 'svelte/reactivity';
+import { Readable } from './readable.svelte';
 
-class Now {
-	#value = $state(new Date());
-	#subscribe: (() => void) | void = undefined;
-
+class Now extends Readable<Date> {
 	constructor() {
-		this.#subscribe = createSubscriber(() => {
+		super(new Date(), (set) => {
 			const interval = setInterval(() => {
-				this.#value = new Date();
+				set(new Date());
 			}, 1000);
 
-			return () => clearInterval(interval);
+			return () => {
+				clearInterval(interval);
+			};
 		});
-	}
-
-	get value() {
-		this.#subscribe?.();
-		return this.#value;
 	}
 }
 
