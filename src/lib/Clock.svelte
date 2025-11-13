@@ -28,9 +28,9 @@
 
 	const { size = 100 }: Props = $props();
 
-	const hours = $derived(now.value.getHours());
-	const minutes = $derived(now.value.getMinutes());
-	const seconds = $derived(now.value.getSeconds());
+	const hours = $derived(now.value?.getHours() ?? 0);
+	const minutes = $derived(now.value?.getMinutes() ?? 0);
+	const seconds = $derived(now.value?.getSeconds() ?? 0);
 
 	const radius = $derived(size / 2);
 	const origin = $derived(`${radius}px ${radius}px`);
