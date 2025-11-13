@@ -1,8 +1,21 @@
 <script lang="ts">
 	import { now } from './now.svelte';
+	import { onVisible } from './onVisible';
+
+	let _now = $state(new Date());
 </script>
 
-<p>{now.value.toLocaleTimeString('fr')}</p>
+<p
+	{@attach onVisible(() => {
+		return now.subscribe((v) => {
+			if (v) {
+				_now = v;
+			}
+		});
+	})}
+>
+	{_now.toLocaleTimeString('fr')}
+</p>
 
 <style>
 	p {

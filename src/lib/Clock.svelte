@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { now } from './now.svelte';
+	import { onVisible } from './onVisible';
 
 	interface Props {
 		size?: number;
@@ -28,9 +29,11 @@
 
 	const { size = 100 }: Props = $props();
 
-	const hours = $derived(now.value?.getHours() ?? 0);
-	const minutes = $derived(now.value?.getMinutes() ?? 0);
-	const seconds = $derived(now.value?.getSeconds() ?? 0);
+	let _now = $state(new Date());
+
+	const hours = $derived(_now.getHours() ?? 0);
+	const minutes = $derived(_now.getMinutes() ?? 0);
+	const seconds = $derived(_now.getSeconds() ?? 0);
 
 	const radius = $derived(size / 2);
 	const origin = $derived(`${radius}px ${radius}px`);
@@ -50,7 +53,17 @@
 	const { x: x_seconds, y: y_seconds } = $derived(angleToCoords(angle_seconds));
 </script>
 
-<svg width="{size}px" height="{size}px">
+<svg
+	width="{size}px"
+	height="{size}px"
+	{@attach onVisible(() => {
+		return now.subscribe((v) => {
+			if (v) {
+				_now = v;
+			}
+		});
+	})}
+>
 	<circle width={size} height={size} cx={radius} cy={radius} r={radius} />
 	<line
 		class="hours"
