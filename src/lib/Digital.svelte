@@ -1,10 +1,8 @@
 <script lang="ts">
-	// import { now } from './now.svelte';
-	import { now } from './now.store';
+	import { now } from './now.svelte';
 </script>
 
-<!-- <p>{now.value.toLocaleTimeString('fr')}</p> -->
-<p>{$now.toLocaleTimeString('fr')}</p>
+<p>{now.value.toLocaleTimeString('fr')}</p>
 
 <style>
 	p {
