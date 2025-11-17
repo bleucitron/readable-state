@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Clock from '$lib/Clock.svelte';
+	import Clock from './Clock.svelte';
 	import Digital from './Digital.svelte';
 
 	let clockOn = $state(false);
