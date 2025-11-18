@@ -97,7 +97,7 @@
 		margin: auto;
 
 		circle {
-			fill: #333;
+			fill: var(--fill, #333);
 		}
 
 		line {
