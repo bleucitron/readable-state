@@ -19,7 +19,9 @@
 
 <style>
 	p {
-		font-family: monospace;
+		font-family:
+			Commit Mono,
+			monospace;
 		text-align: center;
 		font-size: var(--size, 3rem);
 	}
