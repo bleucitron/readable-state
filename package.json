@@ -13,6 +13,9 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint ."
 	},
+	"dependencies": {
+		"@fontsource/dm-serif-display": "^5.2.8"
+	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
 		"@eslint/js": "^9.38.0",
@@ -30,6 +33,7 @@
 		"svelte-check": "^4.3.3",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.46.1",
+		"typescript-svelte-plugin": "^0.3.50",
 		"vite": "^7.1.10"
 	}
 }

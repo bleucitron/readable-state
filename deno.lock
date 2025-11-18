@@ -3,6 +3,7 @@
   "specifiers": {
     "npm:@eslint/compat@^1.4.0": "1.4.1_eslint@9.39.1",
     "npm:@eslint/js@^9.38.0": "9.39.1",
+    "npm:@fontsource/dm-serif-display@^5.2.8": "5.2.8",
     "npm:@sveltejs/adapter-auto@7": "7.0.0_@sveltejs+kit@2.48.4__@sveltejs+vite-plugin-svelte@6.2.1___svelte@5.43.4____acorn@8.15.0___vite@7.2.1____@types+node@22.19.0____picomatch@4.0.3___@types+node@22.19.0__svelte@5.43.4___acorn@8.15.0__vite@7.2.1___@types+node@22.19.0___picomatch@4.0.3__acorn@8.15.0__@types+node@22.19.0_@sveltejs+vite-plugin-svelte@6.2.1__svelte@5.43.4___acorn@8.15.0__vite@7.2.1___@types+node@22.19.0___picomatch@4.0.3__@types+node@22.19.0_svelte@5.43.4__acorn@8.15.0_vite@7.2.1__@types+node@22.19.0__picomatch@4.0.3_@types+node@22.19.0",
     "npm:@sveltejs/kit@^2.47.1": "2.48.4_@sveltejs+vite-plugin-svelte@6.2.1__svelte@5.43.4___acorn@8.15.0__vite@7.2.1___@types+node@22.19.0___picomatch@4.0.3__@types+node@22.19.0_svelte@5.43.4__acorn@8.15.0_vite@7.2.1__@types+node@22.19.0__picomatch@4.0.3_acorn@8.15.0_@types+node@22.19.0",
     "npm:@sveltejs/vite-plugin-svelte@^6.2.1": "6.2.1_svelte@5.43.4__acorn@8.15.0_vite@7.2.1__@types+node@22.19.0__picomatch@4.0.3_@types+node@22.19.0",
@@ -16,6 +17,7 @@
     "npm:svelte-check@^4.3.3": "4.3.3_svelte@5.43.4__acorn@8.15.0_typescript@5.9.3",
     "npm:svelte@^5.41.0": "5.43.4_acorn@8.15.0",
     "npm:typescript-eslint@^8.46.1": "8.46.3_eslint@9.39.1_typescript@5.9.3_@typescript-eslint+parser@8.46.3__eslint@9.39.1__typescript@5.9.3",
+    "npm:typescript-svelte-plugin@~0.3.50": "0.3.50_svelte@5.43.4__acorn@8.15.0_typescript@5.9.3",
     "npm:typescript@^5.9.3": "5.9.3",
     "npm:vite@^7.1.10": "7.2.1_@types+node@22.19.0_picomatch@4.0.3"
   },
@@ -216,6 +218,9 @@
         "@eslint/core",
         "levn"
       ]
+    },
+    "@fontsource/dm-serif-display@5.2.8": {
+      "integrity": "sha512-GYSDSlGU6vyhv9a5MwaiVNf9HCuSVpK8hEFRyG4NNDHCDeHiX7YHDAcWsaoLKKcfXLgWG9YkBkk9T3SxM4rAjQ=="
     },
     "@humanfs/core@0.19.1": {
       "integrity": "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA=="
@@ -670,6 +675,9 @@
       "dependencies": [
         "ms"
       ]
+    },
+    "dedent-js@1.0.1": {
+      "integrity": "sha512-OUepMozQULMLUmhxS95Vudo0jb0UchLimi3+pQ2plj61Fcy8axbP9hbiD4Sz6DPqn6XG3kfmziVfQ1rSys5AJQ=="
     },
     "deep-is@0.1.4": {
       "integrity": "sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ=="
@@ -1209,6 +1217,9 @@
         "mri"
       ]
     },
+    "scule@1.3.0": {
+      "integrity": "sha512-6FtHJEvt+pVMIB9IBY+IcCJ6Z5f1iQnytgyfKMhDKgmzYG+TeH/wx1y3l27rshSbLiSanrR9ffZDrEsmjlQF2g=="
+    },
     "semver@7.7.3": {
       "integrity": "sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==",
       "bin": true
@@ -1273,6 +1284,15 @@
         "svelte"
       ]
     },
+    "svelte2tsx@0.7.45_svelte@5.43.4__acorn@8.15.0_typescript@5.9.3": {
+      "integrity": "sha512-cSci+mYGygYBHIZLHlm/jYlEc1acjAHqaQaDFHdEBpUueM9kSTnPpvPtSl5VkJOU1qSJ7h1K+6F/LIUYiqC8VA==",
+      "dependencies": [
+        "dedent-js",
+        "scule",
+        "svelte",
+        "typescript"
+      ]
+    },
     "svelte@5.43.4_acorn@8.15.0": {
       "integrity": "sha512-tPNp21nDWB0PSHE+VrTvEy9cFtDp2Q+ATxQoFomISEVdikZ1QZ69UqBPz/LlT+Oc8/LYS/COYwDQZrmZEUr+JQ==",
       "dependencies": [
@@ -1329,6 +1349,13 @@
         "@typescript-eslint/utils",
         "eslint",
         "typescript"
+      ]
+    },
+    "typescript-svelte-plugin@0.3.50_svelte@5.43.4__acorn@8.15.0_typescript@5.9.3": {
+      "integrity": "sha512-CD6jMNAYJwqCyQ5zZBDRuveeJvAgIogLwXMf5eXAl4K36wD8W+Npw49h6j5fXnpd7SKcG3uptGpeCGETED6WSA==",
+      "dependencies": [
+        "@jridgewell/sourcemap-codec",
+        "svelte2tsx"
       ]
     },
     "typescript@5.9.3": {
@@ -1400,6 +1427,7 @@
       "dependencies": [
         "npm:@eslint/compat@^1.4.0",
         "npm:@eslint/js@^9.38.0",
+        "npm:@fontsource/dm-serif-display@^5.2.8",
         "npm:@sveltejs/adapter-auto@7",
         "npm:@sveltejs/kit@^2.47.1",
         "npm:@sveltejs/vite-plugin-svelte@^6.2.1",
@@ -1413,6 +1441,7 @@
         "npm:svelte-check@^4.3.3",
         "npm:svelte@^5.41.0",
         "npm:typescript-eslint@^8.46.1",
+        "npm:typescript-svelte-plugin@~0.3.50",
         "npm:typescript@^5.9.3",
         "npm:vite@^7.1.10"
       ]
