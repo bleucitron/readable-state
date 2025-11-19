@@ -1,17 +1,37 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { afterNavigate, goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import favicon from '$lib/assets/favicon.svg';
 	import '$lib/assets/global.css';
 
 	import Whiteboard from '$lib/demo/Whiteboard.svelte';
+	import { on } from 'svelte/events';
 	import { slide } from 'svelte/transition';
 
 	let { children } = $props();
 
 	let whiteboardOn = $state(false);
+	let off: () => void | void;
 
 	const current = $derived(Number(page.url.pathname.substring(1)));
+
+	afterNavigate(() => {
+		off?.();
+
+		off = on(window, 'keyup', ({ bubbles, key }) => {
+			if (bubbles) {
+				if (key === 'w') {
+					whiteboardOn = !whiteboardOn;
+				}
+				if (key === 'n' || key === 'Enter') {
+					goto(`/${current + 1}`);
+				}
+				if (key === 'p') {
+					goto(`/${current - 1}`);
+				}
+			}
+		});
+	});
 </script>
 
 <svelte:head>
@@ -24,19 +44,6 @@
 	{@render children()}
 </main>
 
-<svelte:window
-	on:keydown={(e) => {
-		if (e.key === 'w') {
-			whiteboardOn = !whiteboardOn;
-		}
-		if (e.key === 'n') {
-			goto(`/${current + 1}`);
-		}
-		if (e.key === 'p') {
-			goto(`/${current - 1}`);
-		}
-	}}
-/>
 {#if whiteboardOn}
 	<div class="overlay" transition:slide={{ duration: 200 }}>
 		<Whiteboard />

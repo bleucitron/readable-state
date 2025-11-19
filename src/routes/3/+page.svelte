@@ -1,17 +1,27 @@
 <script lang="ts">
 	import Clock from '$lib/ref/Clock.svelte';
 	import { onMount } from 'svelte';
+	import { on } from 'svelte/events';
 	import { fade } from 'svelte/transition';
 
-	let step = $state(0);
-	let on = $state(false);
+	let step = $state(-1);
 
 	onMount(() => {
-		on = true;
+		step++;
+
+		return on(window, 'keyup', (e) => {
+			if (e.key === 'Enter') {
+				step++;
+			}
+
+			if (step <= 1) {
+				e.stopImmediatePropagation();
+			}
+		});
 	});
 </script>
 
-{#if on}
+{#if step >= 0}
 	<h1 in:fade={{ duration: 2000 }}>
 		readable state
 
@@ -22,14 +32,6 @@
 		{/if}
 	</h1>
 {/if}
-
-<svelte:window
-	on:keyup={(e) => {
-		if (e.key === 'Enter') {
-			step++;
-		}
-	}}
-/>
 
 <style>
 	h1 {

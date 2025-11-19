@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Clock from '$lib/ref/Clock.svelte';
 	import { getRandomNumber } from '$lib/ref/helpers';
+	import { onMount } from 'svelte';
+	import { on } from 'svelte/events';
 	import { fade } from 'svelte/transition';
 
 	let step = $state(-1);
@@ -9,6 +11,17 @@
 
 	const smallSize = 50;
 	const steps = $derived([1, 10, Math.floor((innerHeight * innerWidth) / smallSize / smallSize)]);
+
+	onMount(() =>
+		on(window, 'keyup', (e) => {
+			if (e.key === 'Enter') {
+				step++;
+			}
+			if (step <= steps.length) {
+				e.stopImmediatePropagation();
+			}
+		})
+	);
 </script>
 
 {#if step <= steps.length}
@@ -50,15 +63,7 @@
 	{/if}
 {/if}
 
-<svelte:window
-	bind:innerWidth
-	bind:innerHeight
-	on:keyup={(e) => {
-		if (e.key === 'Enter') {
-			step++;
-		}
-	}}
-/>
+<svelte:window bind:innerWidth bind:innerHeight />
 
 <style>
 	.main-clock {
