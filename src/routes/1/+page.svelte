@@ -16,9 +16,10 @@
 		on(window, 'keyup', (e) => {
 			if (e.key === 'Enter') {
 				step++;
-			}
-			if (step <= steps.length) {
-				e.stopImmediatePropagation();
+
+				if (step <= steps.length) {
+					e.stopImmediatePropagation();
+				}
 			}
 		})
 	);
