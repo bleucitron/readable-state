@@ -1,21 +1,50 @@
 <script lang="ts">
-	import profile from '$lib/assets/profile.png';
+	import Clock from '$lib/ref/Clock.svelte';
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
+
+	let step = $state(0);
+	let on = $state(false);
+
+	onMount(() => {
+		on = true;
+	});
 </script>
 
-<div>
-	<img src={profile} alt="romain" />
-</div>
+{#if on}
+	<h1 in:fade={{ duration: 2000 }}>
+		readable state
+
+		{#if step > 0}
+			<div>
+				<Clock size={50} />
+			</div>
+		{/if}
+	</h1>
+{/if}
+
+<svelte:window
+	on:keyup={(e) => {
+		if (e.key === 'Enter') {
+			step++;
+		}
+	}}
+/>
 
 <style>
-	div {
-		width: 200px;
-		height: 200px;
-		border-radius: 50%;
-		corner-shape: squircle;
-		overflow: hidden;
+	h1 {
+		position: relative;
 
-		img {
+		font-family:
+			DM Serif Display,
+			Georgia,
+			serif;
+
+		div {
+			position: absolute;
+			top: 100%;
 			width: 100%;
+			margin: auto;
 		}
 	}
 </style>
