@@ -12,8 +12,10 @@
 </script>
 
 {#if step <= steps.length}
-	<div>
-		<Clock size={300} />
+	<div class="main-clock">
+		<div>
+			<Clock size={300} />
+		</div>
 	</div>
 
 	{#if step >= 0}
@@ -59,6 +61,20 @@
 />
 
 <style>
+	.main-clock {
+		padding: 3px;
+		border-radius: 50%;
+		overflow: hidden;
+		background: linear-gradient(-45deg, black, #fff);
+		box-shadow: 2px 2px 5px 0 #222;
+
+		div {
+			padding: 5px;
+			background: white;
+			border-radius: 50%;
+		}
+	}
+
 	.multiple {
 		position: absolute;
 		inset: 0;
